@@ -5,3 +5,4 @@ Patches:
 
 Backports:
 - [rocko: linux-common](https://github.com/PHYTEC-Messtechnik-GmbH/meta-phytec/commit/9c7f4e1e366f8f0b936bdf7eb0a91ebe130bd279) and [copied: linux-mainline_4.12.4-phy4](https://github.com/PHYTEC-Messtechnik-GmbH/meta-phytec/blob/morty/recipes-kernel/linux/linux-mainline_4.12.4-phy4.bb)
+- [master: python-protobuf](https://github.com/openembedded/meta-openembedded/commit/5fc8680e27fca3e5fb24cf38f769a421e72ac95f)
