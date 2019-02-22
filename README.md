@@ -1,8 +1,8 @@
 This is the repository of the backport specific Yocto layer for the Stromer Medusa hardware.
 
 Backports:
-- [mailing-list: opkg-utils](http://lists.openembedded.org/pipermail/openembedded-core/2019-February/279217.html)
 - [master: python3_3.7.2](https://github.com/kraj/poky/commit/c92e780c85523fe860602b947b029d7782afa47a)
+- [master: opkg-utils](https://github.com/kraj/poky/commit/a79bc39033c07e5cb0aa5ca95afe8f035c403f33)
 - [sumo: phyimx6.inc](https://github.com/PHYTEC-Messtechnik-GmbH/meta-phytec/commit/9ac1ad147c656355a018530854780e38e1361592)
 - [rocko: wic-helper.bbclass](https://github.com/PHYTEC-Messtechnik-GmbH/meta-phytec/commit/2b487a6b9a401792f503e16093a20b8b9f221a06)
 
