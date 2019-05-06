@@ -1,6 +1,7 @@
 This is the repository of the backport specific Yocto layer for the Stromer Medusa hardware.
 
 Backports:
+- [warrior: bluez 5.50](https://github.com/kraj/poky/commit/496a4f924d23df6beb9382b4e3bcdcf5c12a9cdf)
 - [warrior: python3_3.7.2](https://github.com/kraj/poky/commit/cc5654b870b055629c80baa6be8abd64634b93c1)
 - [warrior: opkg-utils](https://github.com/kraj/poky/commit/a79bc39033c07e5cb0aa5ca95afe8f035c403f33)
 - [sumo: phyimx6.inc](https://github.com/PHYTEC-Messtechnik-GmbH/meta-phytec/commit/9ac1ad147c656355a018530854780e38e1361592)
