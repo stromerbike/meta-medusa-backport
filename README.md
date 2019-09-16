@@ -6,6 +6,7 @@ Backports:
 - [warrior: libvncserver](https://github.com/openembedded/meta-openembedded/commit/14934c44a7ec13ada8b08840fba3b7fec909c354)
 - [warrior: python3_3.7.2](https://github.com/kraj/poky/commit/9773b89a2f371acbe1e40d7cef6afb6c2a24f9c5)
 - [warrior: opkg-utils](https://github.com/kraj/poky/commit/a79bc39033c07e5cb0aa5ca95afe8f035c403f33)
+- [warrior: rsyslog 8.1903.0](https://github.com/openembedded/meta-openembedded/commit/8f78e302b9e3cd0248d8a1a35a116487424ed375)
 - [warrior: wget 1.20.1](https://github.com/kraj/poky/commit/31057d6dccf5fbb5f291dd69017cee34b214d375)
 - [warrior: x11vnc 0.9.16](https://github.com/openembedded/meta-openembedded/commit/a2172fbe46890467e112544372bbb6ef7d92c617)
 
