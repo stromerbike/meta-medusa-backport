@@ -3,7 +3,7 @@ HOMEPAGE = "http://www.python.org"
 LICENSE = "PSFv2"
 SECTION = "devel/python"
 
-LIC_FILES_CHKSUM = "file://LICENSE;md5=f257cc14f81685691652a3d3e1b5d754"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=e466242989bd33c1bd2b6a526a742498"
 
 SRC_URI = "http://www.python.org/ftp/python/${PV}/Python-${PV}.tar.xz \
            file://run-ptest \
@@ -22,9 +22,12 @@ SRC_URI = "http://www.python.org/ftp/python/${PV}/Python-${PV}.tar.xz \
            file://0002-Don-t-do-runtime-test-to-get-float-byte-order.patch \
            file://0003-setup.py-pass-missing-libraries-to-Extension-for-mul.patch \
            file://0001-Lib-sysconfig.py-fix-another-place-where-lib-is-hard.patch \
-           file://CVE-2018-20852.patch \
-           file://CVE-2019-9636.patch \
-           file://CVE-2019-9740.patch \
+           file://0001-Makefile-fix-Issue36464-parallel-build-race-problem.patch \
+	   file://0001-bpo-36852-proper-detection-of-mips-architecture-for-.patch \
+	   file://crosspythonpath.patch \
+           file://reformat_sysconfig.py \
+           file://0001-Use-FLAG_REF-always-for-interned-strings.patch \
+           file://0001-test_locale.py-correct-the-test-output-format.patch \
            "
 
 SRC_URI_append_class-native = " \
@@ -35,8 +38,8 @@ SRC_URI_append_class-nativesdk = " \
            file://0001-main.c-if-OEPYTHON3HOME-is-set-use-instead-of-PYTHON.patch \
            "
 
-SRC_URI[md5sum] = "df6ec36011808205beda239c72f947cb"
-SRC_URI[sha256sum] = "d83fe8ce51b1bb48bbcf0550fd265b9a75cdfdfa93f916f9e700aef8444bf1bb"
+SRC_URI[md5sum] = "08ed8030b1183107c48f2092e79a87e2"
+SRC_URI[sha256sum] = "e85a76ea9f3d6c485ec1780fca4e500725a4a7bbc63c78ebc44170de9b619d94"
 
 # exclude pre-releases for both python 2.x and 3.x
 UPSTREAM_CHECK_REGEX = "[Pp]ython-(?P<pver>\d+(\.\d+)+).tar"
@@ -66,6 +69,7 @@ DEPENDS_append_class-nativesdk = " python3-native"
 EXTRA_OECONF = " --without-ensurepip --enable-shared"
 EXTRA_OECONF_append_class-native = " --bindir=${bindir}/${PN}"
 
+export CROSSPYTHONPATH="${STAGING_LIBDIR_NATIVE}/python${PYTHON_MAJMIN}/lib-dynload/"
 
 EXTRANATIVEPATH += "python3-native"
 
@@ -74,8 +78,16 @@ CACHED_CONFIGUREVARS = " \
                 ac_cv_file__dev_ptc=no \
                 ac_cv_working_tzset=yes \
 "
+python() {
+    # PGO currently causes builds to not be reproducible, so disable it for
+    # now. See YOCTO #13407
+    if bb.utils.contains('MACHINE_FEATURES', 'qemu-usermode', True, False, d) and d.getVar('BUILD_REPRODUCIBLE_BINARIES') != '1':
+        d.setVar('PACKAGECONFIG_PGO', 'pgo')
+    else:
+        d.setVar('PACKAGECONFIG_PGO', '')
+}
 
-PACKAGECONFIG_class-target ??= "readline ${@bb.utils.contains('MACHINE_FEATURES', 'qemu-usermode', 'pgo', '', d)}"
+PACKAGECONFIG_class-target ??= "readline ${PACKAGECONFIG_PGO}"
 PACKAGECONFIG_class-native ??= "readline"
 PACKAGECONFIG_class-nativesdk ??= "readline"
 PACKAGECONFIG[readline] = ",,readline"
@@ -156,6 +168,12 @@ py_package_preprocess () {
                 ${PKGD}/${libdir}/python${PYTHON_MAJMIN}/_sysconfigdata*.py \
                 ${PKGD}/${bindir}/python${PYTHON_BINABI}-config
 
+        # Reformat _sysconfigdata after modifying it so that it remains
+        # reproducible
+        for c in ${PKGD}/${libdir}/python${PYTHON_MAJMIN}/_sysconfigdata*.py; do
+            python3 ${WORKDIR}/reformat_sysconfig.py $c
+        done
+
         # Recompile _sysconfigdata after modifying it
         cd ${PKGD}
         sysconfigfile=`find . -name _sysconfigdata_*.py`
@@ -212,7 +230,7 @@ python(){
 
     newpackages=[]
     for key in python_manifest:
-        pypackage= pn + '-' + key
+        pypackage = pn + '-' + key
 
         if pypackage not in packages:
             # We need to prepend, otherwise python-misc gets everything
@@ -232,8 +250,14 @@ python(){
         for value in python_manifest[key]['rdepends']:
             # Make it work with or without $PN
             if '${PN}' in value:
-                value=value.split('-')[1]
+                value=value.split('-', 1)[1]
             d.appendVar('RDEPENDS_' + pypackage, ' ' + pn + '-' + value)
+
+        for value in python_manifest[key].get('rrecommends', ()):
+            if '${PN}' in value:
+                value=value.split('-', 1)[1]
+            d.appendVar('RRECOMMENDS_' + pypackage, ' ' + pn + '-' + value)
+
         d.setVar('SUMMARY_' + pypackage, python_manifest[key]['summary'])
 
     # Prepending so to avoid python-misc getting everything
@@ -286,7 +310,7 @@ INSANE_SKIP_${PN}-dev += "dev-elf"
 
 # catch all the rest (unsorted)
 PACKAGES += "${PN}-misc"
-RDEPENDS_${PN}-misc += "python3-core python3-email python3-codecs"
+RDEPENDS_${PN}-misc += "python3-core python3-email python3-codecs python3-pydoc python3-pickle"
 RDEPENDS_${PN}-modules_append_class-target = " python3-misc"
 RDEPENDS_${PN}-modules_append_class-nativesdk = " python3-misc"
 FILES_${PN}-misc = "${libdir}/python${PYTHON_MAJMIN} ${libdir}/python${PYTHON_MAJMIN}/lib-dynload"
@@ -297,6 +321,6 @@ FILES_${PN}-man = "${datadir}/man"
 
 RDEPENDS_${PN}-ptest = "${PN}-modules ${PN}-tests unzip bzip2 libgcc tzdata-europe coreutils sed"
 RDEPENDS_${PN}-ptest_append_libc-glibc = " locale-base-tr-tr.iso-8859-9"
-RDEPENDS_${PN}-tkinter += "${@bb.utils.contains('PACKAGECONFIG', 'tk', 'tk', '', d)}"
+RDEPENDS_${PN}-tkinter += "${@bb.utils.contains('PACKAGECONFIG', 'tk', 'tk tk-lib', '', d)}"
 RDEPENDS_${PN}-dev = ""
 

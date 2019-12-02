@@ -1,15 +1,15 @@
 This is the repository of the backport specific Yocto layer for the Stromer Medusa hardware.
 
 Backports:
-- [warrior: bluez 5.50](https://github.com/kraj/poky/commit/496a4f924d23df6beb9382b4e3bcdcf5c12a9cdf)
-- [warrior: busybox 1.30.1](https://github.com/kraj/poky/commit/3f28e5ba7878d57a6c7eb475a83f620a5fda852f)
-- [warrior: libvncserver](https://github.com/openembedded/meta-openembedded/commit/14934c44a7ec13ada8b08840fba3b7fec909c354)
-- [warrior: python3_3.7.2](https://github.com/kraj/poky/commit/787ec750a21df3d712de2a92d7bd9349244e51f5)
-- [warrior: opkg-utils](https://github.com/kraj/poky/commit/a79bc39033c07e5cb0aa5ca95afe8f035c403f33)
-- [warrior: rsyslog 8.1903.0](https://github.com/openembedded/meta-openembedded/commit/8f78e302b9e3cd0248d8a1a35a116487424ed375)
-- [warrior: wget 1.20.1](https://github.com/kraj/poky/commit/31057d6dccf5fbb5f291dd69017cee34b214d375)
-- [warrior: x11vnc 0.9.16](https://github.com/openembedded/meta-openembedded/commit/a2172fbe46890467e112544372bbb6ef7d92c617)
+- [zeus: bluez 5.50](https://github.com/kraj/poky/commit/3e8fef6e679f1f3b51874471e3b631f5c2a769f5)
+- [zeus: busybox 1.31.0](https://github.com/kraj/poky/commit/8f38568a6450856e9335a8e7d49c84ecfc7ada9e)
+- [zeus: libvncserver 0.9.12](https://github.com/openembedded/meta-openembedded/commit/27ea5e705990f4e4a45f61109a81c597c10bf152)
+- [zeus: python3_3.7.5](https://github.com/kraj/poky/commit/f2c963a9309bd4b7c0a60a31b81f2160d58c52c0)
+- [zeus: opkg-utils](https://github.com/kraj/poky/commit/a79bc39033c07e5cb0aa5ca95afe8f035c403f33)
+- [zeus: rsyslog 8.1908.0](https://github.com/openembedded/meta-openembedded/commit/a73d898f31236cd83d82c33754a594898acf3016)
+- [zeus: wget 1.20.3](https://github.com/kraj/poky/commit/ffaede231793509bcd4c1857ad54e6285ad10870)
+- [zeus: x11vnc 0.9.16](https://github.com/openembedded/meta-openembedded/commit/34fddf6114423cb2595c7af88b83d2dd40fe3996)
 
 Fixed recipe version:
-- [master: protobuf](https://github.com/openembedded/meta-openembedded/commit/2f5819d9c37387764a600d9dc8d22bee8a71f710)
-- [master: python{,3}-protobuf](https://github.com/openembedded/meta-openembedded/commit/e78cf913076ba28633d0ec4540f15820a0d944d2)
+- [zeus: protobuf 3.9.2](https://github.com/openembedded/meta-openembedded/commit/466fd78ac6a561ce7b47f2190f0aa3ea6aa3593e)
+- [zeus: python{,3}-protobuf 3.9.2](https://github.com/openembedded/meta-openembedded/commit/ea7ce6dc37b7aed68bc5806318f5f58a411a3f2f)

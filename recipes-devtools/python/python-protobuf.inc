@@ -3,12 +3,12 @@ HOMEPAGE = "https://developers.google.com/protocol-buffers/"
 SECTION = "devel/python"
 
 LICENSE = "BSD-3-Clause"
-LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/BSD-3-Clause;md5=550794465ba0ec5312d6919e203a55f9"
+LIC_FILES_CHKSUM = "file://PKG-INFO;beginline=8;endline=8;md5=19e8f490f9526b1de84f8d949cfcfd4e"
 
 inherit pypi
 
-SRC_URI[md5sum] = "074abcceee0d795ba34ad6430f71d0e8"
-SRC_URI[sha256sum] = "a37836aa47d1b81c2db1a6b7a5e79926062b5d76bd962115a0e615551be2b48d"
+SRC_URI[md5sum] = "d634666c898148e4565ac62f3ba4a2ca"
+SRC_URI[sha256sum] = "843f498e98ad1469ad54ecb4a7ccf48605a1c5d2bd26ae799c7a2cddab4a37ec"
 
 # http://errors.yoctoproject.org/Errors/Details/184715/
 # Can't find required file: ../src/google/protobuf/descriptor.proto
@@ -28,4 +28,5 @@ RDEPENDS_${PN} += " \
 "
 
 # For usage in other recipies when compiling protobuf files (e.g. by grpcio-tools)
-BBCLASSEXTEND = "native"
+BBCLASSEXTEND = "native nativesdk"
+
