@@ -4,6 +4,7 @@ Backports:
 - [zeus: bluez 5.50](https://github.com/kraj/poky/commit/3e8fef6e679f1f3b51874471e3b631f5c2a769f5)
 - [zeus: busybox 1.31.0](https://github.com/kraj/poky/commit/8f38568a6450856e9335a8e7d49c84ecfc7ada9e)
 - [zeus: libvncserver 0.9.12](https://github.com/openembedded/meta-openembedded/commit/27ea5e705990f4e4a45f61109a81c597c10bf152)
+- [zeus: picocom 3.1](https://github.com/openembedded/meta-openembedded/commit/c1ecd778cef733caf1e3b0ced7fd4da21f080e6d)
 - [zeus: python3_3.7.5](https://github.com/kraj/poky/commit/f2c963a9309bd4b7c0a60a31b81f2160d58c52c0)
 - [zeus: opkg-utils](https://github.com/kraj/poky/commit/a79bc39033c07e5cb0aa5ca95afe8f035c403f33)
 - [zeus: rsyslog 8.1908.0](https://github.com/openembedded/meta-openembedded/commit/a73d898f31236cd83d82c33754a594898acf3016)
