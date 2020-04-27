@@ -3,6 +3,7 @@ This is the repository of the backport specific Yocto layer for the Stromer Medu
 Backports:
 - [zeus: bluez 5.50](https://github.com/kraj/poky/commit/f9ef210967ab34168d4a24930987dc0731baf56f)
 - [zeus: busybox 1.31.0](https://github.com/kraj/poky/commit/3e311128b2514f4303422cfd9d455ff5965ea55a)
+- [zeus: iputils s20190709](https://github.com/kraj/poky/commit/b7138f18b616b27ee7c4850f2ee09a76a56415dd)
 - [zeus: libvncserver 0.9.12](https://github.com/openembedded/meta-openembedded/commit/27ea5e705990f4e4a45f61109a81c597c10bf152)
 - [zeus: picocom 3.1](https://github.com/openembedded/meta-openembedded/commit/c1ecd778cef733caf1e3b0ced7fd4da21f080e6d)
 - [zeus: python3 3.7.7](https://github.com/kraj/poky/commit/acb0b159be8056a054bcec8be4a369199392d5b7)
