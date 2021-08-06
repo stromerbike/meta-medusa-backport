@@ -3,6 +3,7 @@ This is the repository of the backport specific Yocto layer for the Stromer Medu
 Backports:
 - [dunfell: features_check.bbclass](https://github.com/kraj/poky/commit/b1fe4aab8b8b8a98ab8ba4788a34a90446d6222b)
 - [dunfell: bluez 5.54](https://github.com/kraj/poky/commit/1eac51ae304fcb840a510a461dff4cdd9bc7b27a)
+- [dunfell: bluez 5.55](https://github.com/kraj/poky/commit/6fa6afd5329e9c4f80d1fc8a9365a6faacec0ed0)
 - [zeus: busybox 1.31.0](https://github.com/kraj/poky/commit/3e311128b2514f4303422cfd9d455ff5965ea55a)
 - [zeus: fping 4.2](https://github.com/openembedded/meta-openembedded/commit/410baed3e987ba0664feec46707978e5113efdc3)
 - [zeus: iputils s20190709](https://github.com/kraj/poky/commit/b7138f18b616b27ee7c4850f2ee09a76a56415dd)
