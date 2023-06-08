@@ -5,3 +5,6 @@ Backports:
 
 Fixed recipe version:
 - N/A
+
+Notes:
+- Add "${OEROOT}/../meta-medusa-backport" to BBLAYERS in case there are any backports.
