@@ -1,7 +1,7 @@
 This is the repository of the backport specific Yocto layer for the Stromer Medusa hardware.
 
 Backports:
-- N/A
+- [master: systemd](https://github.com/yoctoproject/poky/commit/a278540fc16ff4f47436549bfc745133d7d276dd)
 
 Fixed recipe version:
 - N/A
